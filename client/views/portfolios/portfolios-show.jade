@@ -22,6 +22,7 @@ h3 {{name | uppercase}} : {{position | currency}}
           th Quantity
           th Position
           th Purchased
+          th Sell Stock
       tbody
         tr(ng-repeat='stock in stocks')
           td {{stock.symbol}}
@@ -29,3 +30,4 @@ h3 {{name | uppercase}} : {{position | currency}}
           td {{stock.quantity}}
           td {{stock.position | currency}}
           td {{stock.purchasedOn | date:'yyyy-MM-dd'}}
+          td: button.btn-sm.btn-warning(ng-click='sell(stock, $index)') Sell

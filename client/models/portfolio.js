@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('eTrade')
-.factory('Portfolio', function($rootScope, $firebaseArray, $window){
+.factory('Portfolio', function($rootScope, $firebaseArray, $firebaseObject, $window){
 
   function Portfolio(){
   }
@@ -32,6 +32,14 @@ angular.module('eTrade')
     $rootScope.afUser.names = names.join(',');
     //saves new array to the database
     return $rootScope.afUser.$save();
+  };
+  Portfolio.deleteStock = function(stockToSell, portfolio, idx, key){
+    var fbPortfolio = $rootScope.fbUser.child('portfolios/' + portfolio);
+    var fbStock = fbPortfolio.child(key);
+    var afStock = $firebaseObject(fbStock);
+    afStock.$loaded().then(function(){
+      afStock.$remove();
+    });
   };
 
   return Portfolio;

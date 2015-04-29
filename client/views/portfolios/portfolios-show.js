@@ -27,6 +27,7 @@ angular.module('eTrade')
   function clearFields(){
     $scope.stock = null;
   }
+
   //sets the init to 0
   //multiplies the last price with the number of stock
   function computePosition(){
@@ -34,4 +35,14 @@ angular.module('eTrade')
       return acc + stock.position;
     }, 0);
   }
+  $scope.sell = function(stock, idx){
+    var key = stock.$id;
+    var stockToSell = new Stock(stock);
+    stockToSell.getQuote()
+    .then(function(response){
+      stockToSell.quote = response.data.LastPrice;
+      stockToSell.sellStock()
+      Portfolio.deleteStock(stock, $state.params.name, idx, key);
+    });
+  };
 });
