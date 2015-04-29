@@ -1,0 +1,14 @@
+h3 NEW PORTFOLIO
+
+.row
+  .col-xs-3
+    h4 Portfolio Form
+    form(name='portfolioForm', novalidate)
+      .form-group
+        label(for='name') Name
+        //-ng-model=name is single item to be added and pushed into function
+        input.form-control#name(type='text', ng-model='name')
+      .form-group
+        //- pushes new Portfolio name to the controller
+        button.btn.btn-success(type='submit', ng-click='add(name)') Add Portfolio
+  .col-xs-9

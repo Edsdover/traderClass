@@ -1,0 +1,14 @@
+.row
+  .col-xs-4.col-xs-offset-4
+    h3 LIST PORTFOLIOS
+    table.table.table-striped.table-hover
+      thead
+        tr
+          th.h3 Name
+      tbody
+        //- loops over the array of names for each name
+        tr(ng-repeat='name in names')
+          //-prints out list of all names in array
+          //-adds ui-sref link to each name to new page
+          td: a(ui-sref='portfolios.show({name:name})').h4 {{name}}
+  .col-xs-6
