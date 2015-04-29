@@ -29,8 +29,12 @@ angular.module('eTrade')
         return data.password.email;
       case 'twitter':
         return data.twitter.username;
+      case 'github':
+        return data.github.username;
+      case 'facebook':
+        return data.facebook.username;
       case 'google':
-        return data.google.displayName;
+        return data.google.username;
     }
   }
 });
